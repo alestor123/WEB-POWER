@@ -2,8 +2,8 @@
 require('dotenv').config()
 var express = require('express'),
 app = express(),
-address = require('network-address'),
 isLinux = require('is-linux'),
+ip = require("ip"),
 isOsx = require('is-osx'),
 isWindows = require('is-windows'),
 argv = process.argv[2],
@@ -22,6 +22,7 @@ else if (argv =='-h'|| argv == '--help') { // checking undifined args
 else{
     app.listen(port, () => console.log(`server running at ${port}`))
 }
+
 function poweroff() {
     var cmd = '';
 	if(isLinux() || isOsx()) {
@@ -31,7 +32,7 @@ function poweroff() {
 	} else {
 		throw new Error('Unknown OS!');
 	}
-	cp.exec(cmd, function (err, stdout, stderr) {
+	cp.exec(cmd,  (err, stdout, stderr) => {
 		cb(err, stdout, stderr);
 	});
 }
@@ -47,7 +48,10 @@ function sleep(){
 	} else {
 		throw new Error('Unknown OS!');
 	}
-	cp.exec(cmd, function (err, stderr, stdout) {
+	cp.exec(cmd, (err, stderr, stdout) => {
 		cb(err, stderr, stdout);
 	});
 }
+app.get('/address',(req, res) => {
+    res.json({ address: ip.address() })
+  })
