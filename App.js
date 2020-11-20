@@ -5,6 +5,7 @@ app = express(),
 Linux = require('is-linux'),
 isOsx = require('is-osx'),
 isWindows = require('is-windows'),
+argv = process.argv[2],
 pck = require('./package.json'),  
 cp = require('child_process'),
 port = process.env.PORT || argv || 3000;
