@@ -23,7 +23,7 @@ else{
     app.listen(port, () => console.log(`server running at ${port}`))
 }
 
-function poweroff() {
+function poweroff(cb) {
     var cmd = '';
 	if(isLinux() || isOsx()) {
 		cmd = 'sudo shutdown -h now';
@@ -36,7 +36,7 @@ function poweroff() {
 		cb(err, stdout, stderr);
 	});
 }
-function sleep(){
+function sleep(cb){
     var cmd = '';
 	if (isOsx()) {
 		cmd = 'pmset sleepnow';
@@ -54,10 +54,34 @@ function sleep(){
 }
 app.get('/address',(req, res) => {
     res.json({ address: ip.address() })
+    console.log(req.ip + 'requested address')
   })
-app.delete('/', function (req, res) {
+app.delete('/', (req, res) => {
     res.end()
     console.log(`Stopped ${pck.name}`)
+    console.log(req.ip + 'Stopped server')
     process.exit()
 })
+app.post('/off',(req, res) => {
+    poweroff((err, stderr, stdout) => {
+      if (err) {
+        console.log(err)
+        res.status(500).json({ error: 'Can\'t run power-off' })
+      } else {
+        res.end()
+      }
+    })
+  })
+  
+  app.post('/sleep',  (req, res)  =>{
+    sleep( (err, stderr, stdout) => {
+      if (err) {
+        console.log(err)
+        res.status(500).json({ error: 'Can\'t run sleep' })
+      } else {
+          console.log(req.ip + 'Send a sleep command')
+        res.end()
+      }
+    })
+  })
   
