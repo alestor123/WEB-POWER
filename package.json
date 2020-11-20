@@ -7,8 +7,8 @@
     "web-power": "App.js"
   },
   "scripts": {
-    "start":"node App.js",
-    "dev":"nodemon App.js",
+    "start": "node App.js",
+    "dev": "nodemon App.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,6 +23,9 @@
   "homepage": "https://github.com/alestor123/WEB-POWER#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "is-linux": "^1.0.1",
+    "is-osx": "^1.0.2",
+    "is-windows": "^1.0.2"
   }
 }
