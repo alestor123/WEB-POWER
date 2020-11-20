@@ -7,6 +7,8 @@
     "web-power": "App.js"
   },
   "scripts": {
+    "start":"node App.js",
+    "dev":"nodemon App.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
