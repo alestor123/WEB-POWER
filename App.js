@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+// this is a simple code for a remote power option powered by express 
 require('dotenv').config()
 var express = require('express'),
 app = express(),
@@ -22,7 +23,7 @@ else if (argv =='-h'|| argv == '--help') { // checking undifined args
 else{
     app.listen(port, () => console.log(`server running at ${port}`))
 }
-
+// credits : inspired by  hemant both sleep-mode and power-off Licence MIT
 function poweroff(cb) {
     var cmd = '';
 	if(isLinux() || isOsx()) {
