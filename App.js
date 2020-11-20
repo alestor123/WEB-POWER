@@ -16,7 +16,7 @@ if(argv== '-v' ||argv == '--version'){
 }
 else if (argv =='-h'|| argv == '--help') { // checking undifined args
     console.log(`
-    Usage: badge-generator <Port> 
+    Usage: web-power <Port> 
 `);
 }
 else{
@@ -55,3 +55,9 @@ function sleep(){
 app.get('/address',(req, res) => {
     res.json({ address: ip.address() })
   })
+app.delete('/', function (req, res) {
+    res.end()
+    console.log(`Stopped ${pck.name}`)
+    process.exit()
+})
+  
