@@ -2,7 +2,8 @@
 require('dotenv').config()
 var express = require('express'),
 app = express(),
-Linux = require('is-linux'),
+address = require('network-address'),
+isLinux = require('is-linux'),
 isOsx = require('is-osx'),
 isWindows = require('is-windows'),
 argv = process.argv[2],
@@ -34,7 +35,7 @@ function poweroff() {
 		cb(err, stdout, stderr);
 	});
 }
-function reboot(){
+function sleep(){
     var cmd = '';
 	if (isOsx()) {
 		cmd = 'pmset sleepnow';
