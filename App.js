@@ -70,6 +70,22 @@ function sleep(cb){
 		cb(err, stderr, stdout);
 	});
 }
+function reboot(cb){
+  var cmd = '';
+if (isOsx()) {
+  cmd = 'reboot';
+} else if (isLinux()) {
+  // should work on all OSs using systemd.
+  cmd = 'sudo reboot';
+} else if (isWindows()) {
+  cmd = 'shutdown /r';
+} else {
+  throw new Error('Unknown OS!');
+}
+cp.exec(cmd, (err, stderr, stdout) => {
+  cb(err, stderr, stdout);
+});
+}
 app.get('/address',(req, res) => {
     res.json({ address: ip.address() })
     console.log(req.ip + 'requested address')
@@ -102,4 +118,15 @@ app.post('/off',(req, res) => {
       }
     })
   })
+app.post('/reboot',  (req, res)  =>{
+    reboot( (err, stderr, stdout) => {
+      if (err) {
+        console.log(err)
+        res.status(500).json({ error: 'Can\'t run reboot' })
+      } else {
+          console.log(req.ip + 'Send a reboot command')
+        res.end()
+      }
+    })
+})
   
