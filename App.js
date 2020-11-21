@@ -3,6 +3,7 @@
 require('dotenv').config()
 var express = require('express'),
 app = express(),
+path = require('path'),
 isLinux = require('is-linux'),
 ip = require("ip"),
 isOsx = require('is-osx'),
@@ -11,6 +12,7 @@ argv = process.argv[2],
 pck = require('./package.json'),  
 cp = require('child_process'),
 port = process.env.PORT || argv || 3000;
+app.use(express.static(path.join(__dirname, 'public')))
 if(argv== '-v' ||argv == '--version'){
     console.log( `${pck.version}`)
   process.exit(1);
