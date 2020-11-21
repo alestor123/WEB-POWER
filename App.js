@@ -20,6 +20,23 @@ else if (argv =='-h'|| argv == '--help') { // checking undifined args
     Usage: web-power <Port> 
 `);
 }
+
+else if (argv =='-i'|| argv == '--issue') { // checking undifined args
+  console.log(`
+  Issues at ${pck.bugs.url} 
+`);
+}
+
+else if (argv =='-a'|| argv == '--author') { // checking undifined args
+  console.log(`
+  Author: ${pck.author} 
+`);
+}
+
+else if (argv =='-d'|| argv == '--docs') { // checking undifined args
+  console.log(`
+  Docs at ${pck.homepage} 
+`);}
 else{
     app.listen(port, () => console.log(`server running at ${port}`))
 }
