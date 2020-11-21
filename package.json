@@ -1,6 +1,6 @@
 {
   "name": "web-power",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "This is a simple code for sending power off / sleep / reboot  commands to the device via web ",
   "main": "App.js",
   "bin": {
