@@ -3,13 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="icon" href="public/assets/image/icon.svg">
+    <link rel="stylesheet" href="public/styles/App.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>Web Power</title>
 </head>
 <body>
-    
+    <div class="container">
+    <div class="center">
+      <h1 class="title"> <i class="fa fa-power-off"></i> Web Power</h1>
+      <form action="/sleep" method="POST">
+          <button type="submit" class="sleep" > <i class="fas fa-snooze"></i> Sleep</button>
+        </form>
+          <form action="/off" method="POST">
+    <button type="button" class="poweroff"  > <i class="fa fa-power-off"></i> Power Off</button>
+          </form>
+          <form action="/reboot" method="POST">
+            <button type="button" class="poweroff"  > <i class="fa fa-power-off"></i> Reboot</button>
+          </form>
+</div>
+</div>
+<script src="public/scripts/App.js"></script>
 </body>
 </html>
